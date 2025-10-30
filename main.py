@@ -3,7 +3,7 @@ from tqdm import tqdm
 from keras.datasets import mnist
 data = mnist.load_data()
 
-with open("imdata.csv", "w") as f:
+with open("./training/imdata.csv", "w") as f:
     imdata = data[0][0].tolist()
     imdata_normalized = []
     with tqdm(total=len(imdata), desc="Normalizing pixel data", unit="img") as pbar:
@@ -22,7 +22,7 @@ with open("imdata.csv", "w") as f:
             f.write("\n")
             pbar.update(1)
 
-with open("imlabels.csv", "w") as f:
+with open("./training/imlabels.csv", "w") as f:
     with tqdm(total=len(data[0][1]), desc="Writing labels", unit="label") as pbar:
         for label in data[0][1]:
             f.write(f"{label}\n")
